@@ -1,4 +1,5 @@
 import React from 'react';
+import "./index.css"
 
 const AppointmentItem = ({ appointment, onDelete, onCheck, onEdit }) => {
   return (
