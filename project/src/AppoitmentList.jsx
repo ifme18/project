@@ -65,8 +65,46 @@ const AppointmentList = () => {
   return (
     <div>
       <h1>Appointment List</h1>
+
+
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder="Search by title"
+        className="search-input"
+      />
+
+      {isEditing ? (
+        <form onSubmit={handleEditSubmit} style={{ marginBottom: "1rem", padding: "1rem", border: "1px solid #ccc" }}>
+          <h3>Edit Appointment</h3>
+          <input
+            type="text"
+            name="title"
+            value={currentAppointment.title}
+            onChange={handleEditChange}
+            placeholder="Title"
+          />
+          <input
+            type="text"
+            name="description"
+            value={currentAppointment.description}
+            onChange={handleEditChange}
+            placeholder="Description"
+          />
+          <input
+            type="date"
+            name="date"
+            value={currentAppointment.date}
+            onChange={handleEditChange}
+          />
+          <button type="submit">Save Changes</button>
+          <button onClick={() => setIsEditing(false)}>Cancel</button>
+        </form>
+      ) : null}
+
       <ul>
-        {appointments.map((appointment) => (
+        {filteredAppointments.map((appointment) => (
           <AppointmentItem
             key={appointment.id}
             appointment={appointment}
@@ -81,5 +119,4 @@ const AppointmentList = () => {
 };
 
 export default AppointmentList;
-
 
