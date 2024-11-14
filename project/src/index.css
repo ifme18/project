@@ -33,7 +33,24 @@
 .navbar-nav a:hover {
   color: #f0f0f0;
 }
+.search-input {
+  width: 100%;
+  colour: purple;
+  max-width: 400px;
+  padding: 10px;
+  margin: 10px auto;
+  border: 1px solid #28d523;
+  border-radius: 4px;
+  font-size: 1rem;
+  outline: none;
+  box-shadow: 0 2px 4px rgba(205, 8, 100, 0.1);
+ max-width: 1000000px;
+}
 
+.search-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
+}
 
 .form-container {
   max-width: 600px;
@@ -80,4 +97,69 @@
 
 .form-button:hover {
   background-color: #0056b3;
+}
+
+.appointment-item {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
+
+.appointment-item h3 {
+  margin: 0 0 0.5rem;
+}
+
+.appointment-item p {
+  margin-bottom: 0.5rem;
+}
+
+.appointment-item button {
+  margin-right: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.appointment-item button:hover {
+  background-color: hsl(253, 80%, 48%);
+}
+
+.appointment-item button.done {
+  background-color: #c71d86;
+}
+.edit-form {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
+
+.edit-form h3 {
+  margin: 0 0 0.5rem;
+}
+
+.edit-form input {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.edit-form button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+.edit-form button:hover {
+  background-color: #f2f2f2;
+}
+
+.edit-form button[type="submit"] {
+  background-color: #4CAF50; /* Green color for submit button */
+  color: white;
 }

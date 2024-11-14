@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import './index.css'; 
+import { useNavigate } from "react-router-dom";
+
+
 
 const AppointmentForm = () => {
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [date, setDate] = useState("");
@@ -25,6 +29,8 @@ const AppointmentForm = () => {
         setTitle("");
         setDescription("");
         setDate("");
+
+        navigate("/AppointmentList");
       } else {
         console.error("Error creating appointment:", response.statusText);
       }

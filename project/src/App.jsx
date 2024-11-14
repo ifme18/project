@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from './NavBar';
 import AppointmentForm from './AppointmentForm';
 import AppointmentList from './AppoitmentList'
+import Search from './Search';
  
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<AppointmentList />} />
             <Route path="/create" element={<AppointmentForm />} />
+            <Route path="/Search" element={<Search/>}/>
           </Routes>
         </main>
       </div>

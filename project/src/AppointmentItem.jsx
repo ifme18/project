@@ -1,8 +1,9 @@
 import React from "react";
+import './index.css'
 
-const AppointmentItem = ({ appointment, onDelete, onCheck }) => {
+const AppointmentItem = ({ appointment, onDelete, onCheck, onEdit }) => {
   return (
-    <div style={{ marginBottom: "1rem", padding: "1rem", border: "1px solid #ccc" }}>
+    <div className="appointment-item">
       <h3>{appointment.title}</h3>
       <p>{appointment.description}</p>
       <p>Date: {appointment.date}</p>
@@ -11,8 +12,11 @@ const AppointmentItem = ({ appointment, onDelete, onCheck }) => {
         {appointment.done ? "Uncheck" : "Check"}
       </button>
       <button onClick={() => onDelete(appointment.id)}>Delete</button>
+      <button onClick={() => onEdit(appointment)}>Edit</button>
     </div>
   );
 };
 
 export default AppointmentItem;
+
+

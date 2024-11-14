@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './index.css' // Import the CSS file
+import './index.css'  
 
 const NavBar = () => {
   return (
@@ -12,6 +12,7 @@ const NavBar = () => {
         <div className="navbar-nav">
           <Link to="/">View Appointments</Link>
           <Link to="/create">Create Appointment</Link>
+          
         </div>
       </div>
     </nav>
