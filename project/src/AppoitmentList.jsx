@@ -3,9 +3,9 @@ import AppointmentItem from "./AppointmentItem";
 
 const AppointmentList = () => {
   const [appointments, setAppointments] = useState([]);
-   
-  
-  
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentAppointment, setCurrentAppointment] = useState(null);
+
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
@@ -26,23 +26,68 @@ const AppointmentList = () => {
   const handleDelete = (id) => {
     setAppointments(appointments.filter((appointment) => appointment.id !== id));
   };
-  
-  
 
   const handleCheck = (id) => {
-    setAppointments(appointments.map((appointment) => 
-      appointment.id === id ? { ...appointment, checked: true } : appointment
-    ));
+    setAppointments(
+      appointments.map((appointment) =>
+        appointment.id === id ? { ...appointment, done: !appointment.done } : appointment
+      )
+    );
   };
 
-  const handleEdit = (id) => {
-  
-    console.log("Edit appointment with id:", id);
+  const handleEdit = (appointment) => {
+    setIsEditing(true);
+    setCurrentAppointment(appointment);
+  };
+
+  const handleEditChange = (e) => {
+    const { name, value } = e.target;
+    setCurrentAppointment((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleEditSubmit = (e) => {
+    e.preventDefault();
+    setAppointments(
+      appointments.map((appointment) =>
+        appointment.id === currentAppointment.id ? currentAppointment : appointment
+      )
+    );
+    setIsEditing(false);
+    setCurrentAppointment(null);
   };
 
   return (
     <div>
       <h1>Appointment List</h1>
+
+      {isEditing ? (
+        <form onSubmit={handleEditSubmit} style={{ marginBottom: "1rem", padding: "1rem", border: "1px solid #ccc" }}>
+          <h3>Edit Appointment</h3>
+          <input
+            type="text"
+            name="title"
+            value={currentAppointment.title}
+            onChange={handleEditChange}
+            placeholder="Title"
+          />
+          <input
+            type="text"
+            name="description"
+            value={currentAppointment.description}
+            onChange={handleEditChange}
+            placeholder="Description"
+          />
+          <input
+            type="date"
+            name="date"
+            value={currentAppointment.date}
+            onChange={handleEditChange}
+          />
+          <button type="submit">Save Changes</button>
+          <button onClick={() => setIsEditing(false)}>Cancel</button>
+        </form>
+      ) : null}
+
       <ul>
         {appointments.map((appointment) => (
           <AppointmentItem
@@ -59,3 +104,4 @@ const AppointmentList = () => {
 };
 
 export default AppointmentList;
+
