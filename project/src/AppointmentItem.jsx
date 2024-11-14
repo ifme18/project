@@ -1,9 +1,8 @@
 import React from "react";
-import './index.css'
 
 const AppointmentItem = ({ appointment, onDelete, onCheck, onEdit }) => {
   return (
-    <div className="appointment-item">
+    <div style={{ marginBottom: "1rem", padding: "1rem", border: "1px solid #ccc" }}>
       <h3>{appointment.title}</h3>
       <p>{appointment.description}</p>
       <p>Date: {appointment.date}</p>
@@ -18,5 +17,3 @@ const AppointmentItem = ({ appointment, onDelete, onCheck, onEdit }) => {
 };
 
 export default AppointmentItem;
-
-
