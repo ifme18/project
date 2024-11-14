@@ -1,8 +1,9 @@
 import React from "react";
+import styles from './appointment-item.module.css'; // Import CSS Module
 
 const AppointmentItem = ({ appointment, onDelete, onCheck, onEdit }) => {
   return (
-    <div style={{ marginBottom: "1rem", padding: "1rem", border: "1px solid #ccc" }}>
+    <div className={styles.appointmentItem}>
       <h3>{appointment.title}</h3>
       <p>{appointment.description}</p>
       <p>Date: {appointment.date}</p>
@@ -17,3 +18,4 @@ const AppointmentItem = ({ appointment, onDelete, onCheck, onEdit }) => {
 };
 
 export default AppointmentItem;
+
