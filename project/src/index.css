@@ -1,7 +1,8 @@
 .navbar {
-  background-color: blue;
+  background: linear-gradient(90deg, #0077b6, #00b4d8, #90e0ef);
   padding: 1rem;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  border-bottom: 3px solid #ffffff33;
 }
 
 .navbar-container {
@@ -14,8 +15,10 @@
 
 .navbar-logo {
   color: #fff;
-  font-size: 2rem;
+  font-size: 2.5rem;
   font-weight: bold;
+  font-family: 'Cursive', sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .navbar-nav {
@@ -27,73 +30,192 @@
   color: #fff;
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.3s ease-in-out;
+  font-size: 1.1rem;
+  transition: color 0.3s ease-in-out, transform 0.2s;
+  position: relative;
+}
+
+.navbar-nav a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #f0f0f0;
+  transition: width 0.3s;
+  position: absolute;
+  bottom: -5px;
+  left: 0;
 }
 
 .navbar-nav a:hover {
   color: #f0f0f0;
+  transform: scale(1.05);
 }
-.search-input {
+
+.navbar-nav a:hover::after {
   width: 100%;
-  colour: purple;
-  max-width: 400px;
-  padding: 10px;
-  margin: 10px auto;
-  border: 1px solid #28d523;
-  border-radius: 4px;
-  font-size: 1rem;
-  outline: none;
-  box-shadow: 0 2px 4px rgba(205, 8, 100, 0.1);
- max-width: 1000000px;
 }
 
-.search-input:focus {
-  border-color: #007bff;
-  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
+/* General styling for the container */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f5;
+  margin: 0;
+  padding: 20px;
 }
 
-.form-container {
-  max-width: 600px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.form-title {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
+h1 {
   text-align: center;
-  margin-bottom: 1rem;
+  color: #333;
+  margin-bottom: 20px;
 }
 
-.form-input,
-.form-textarea,
-.form-button {
+.search-input {
   display: block;
   width: 100%;
-  margin-bottom: 1rem;
-  padding: 0.75rem;
-  font-size: 16px;
+  max-width: 400px;
+  margin: 0 auto 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the form */
+form {
+  background-color: #ffffff;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
-.form-input:focus,
-.form-textarea:focus {
-  outline: none;
-  border-color: #007bff;
+form h3 {
+  margin-bottom: 10px;
+  color: #4caf50;
 }
 
-.form-button {
-  background-color: #007bff;
-  color: #fff;
+form input[type="text"],
+form input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+form button {
+  background-color: #4caf50;
+  color: white;
   border: none;
+  padding: 10px 15px;
+  margin-right: 10px;
+  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
 }
+
+form button:hover {
+  background-color: #45a049;
+}
+
+form button:last-child {
+  background-color: #f44336;
+}
+
+form button:last-child:hover {
+  background-color: #e53935;
+}
+
+/* Styling for the appointment list */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* Styling for individual appointments */
+.appointment {
+  border: 2px solid #4caf50;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.appointment:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.appointment header {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.appointment h3 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: #4caf50;
+}
+
+.appointment p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.actions button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.actions button:hover {
+  background-color: #45a049;
+}
+
+.actions button:active {
+  transform: scale(0.98);
+}
+
+.actions button:nth-child(2) {
+  background-color: #f44336;
+}
+
+.actions button:nth-child(2):hover {
+  background-color: #e53935;
+}
+
+.actions button:nth-child(3) {
+  background-color: #ffa000;
+}
+
+.actions button:nth-child(3):hover {
+  background-color: #fb8c00;
+}
+
 
 .form-button:hover {
   background-color: #0056b3;
