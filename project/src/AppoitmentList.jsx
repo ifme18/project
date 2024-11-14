@@ -3,6 +3,7 @@ import AppointmentItem from "./AppointmentItem";
 
 const AppointmentList = () => {
   const [appointments, setAppointments] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");  
   const [isEditing, setIsEditing] = useState(false);
   const [currentAppointment, setCurrentAppointment] = useState(null);
 
@@ -56,9 +57,23 @@ const AppointmentList = () => {
     setCurrentAppointment(null);
   };
 
+  
+  const filteredAppointments = appointments.filter((appointment) =>
+    appointment.title && appointment.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div>
       <h1>Appointment List</h1>
+
+
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder="Search by title"
+        className="search-input"
+      />
 
       {isEditing ? (
         <form onSubmit={handleEditSubmit} style={{ marginBottom: "1rem", padding: "1rem", border: "1px solid #ccc" }}>
@@ -89,7 +104,7 @@ const AppointmentList = () => {
       ) : null}
 
       <ul>
-        {appointments.map((appointment) => (
+        {filteredAppointments.map((appointment) => (
           <AppointmentItem
             key={appointment.id}
             appointment={appointment}
@@ -104,4 +119,5 @@ const AppointmentList = () => {
 };
 
 export default AppointmentList;
+
 
